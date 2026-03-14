@@ -1,4 +1,4 @@
-fn factorial(num: u64) -> u64 {
+fn factorial1(num: u64) -> u64 {
     // TODO: Complete this function to return the factorial of `num` which is
     // defined as `1 * 2 * 3 * … * num`.
     // https://en.wikipedia.org/wiki/Factorial
@@ -10,6 +10,18 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+    let mut x = 1;
+
+    for i in 2..=num {
+        x *= i;
+    }
+    x
+}
+
+fn factorial(num: u64) -> u64 {
+    (2..=num).fold(1, |acc, i| acc * i);
+    // or as suggested by clippy:
+    (2..=num).product()
 }
 
 fn main() {
